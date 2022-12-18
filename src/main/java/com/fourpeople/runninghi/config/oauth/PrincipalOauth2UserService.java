@@ -42,17 +42,14 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
             case "google" -> {
                 System.out.println("구글 로그인 요청");
                 oAuth2UserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
-                break;
             }
             case "facebook" -> {
                 System.out.println("페이스북 로그인 요청");
                 oAuth2UserInfo = new FacebookUserInfo(oAuth2User.getAttributes());
-                break;
             }
             case "naver" -> {
                 System.out.println("네이버 로그인 요청");
                 oAuth2UserInfo = new NaverUserInfo((Map<String, Object>) oAuth2User.getAttributes().get("response"));
-                break;
             }
             default -> System.out.println("우리는 구글, 페이스북만 지원해요");
         }
