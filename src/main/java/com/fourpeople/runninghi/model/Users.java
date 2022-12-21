@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,9 +29,17 @@ public class Users {
     private String password;
     private String email;
     private String role; // ROLE_USER, ROLE_ADMIN
+    private String roles; // USER, ADMIN 여러 role 동시에 가능
     private String provider;
     private String providerId;
     @CreationTimestamp
     private Timestamp createDate;
+
+    public List<String> getRoleList() {
+        if (this.roles.length() > 0) {
+            return Arrays.asList(roles.split(","));
+        }
+        return new ArrayList<>();
+    }
 
 }

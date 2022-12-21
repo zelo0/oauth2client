@@ -24,6 +24,7 @@ public class IndexController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+
     @GetMapping("/test/login")
     @ResponseBody
     public String testLogin(Authentication authentication, @AuthenticationPrincipal PrincipalDetails userDetails) { // DI (의존성 주입)
@@ -79,7 +80,7 @@ public class IndexController {
         return "joinForm";
     }
 
-    @PostMapping("/join")
+//    @PostMapping("/join")
     public String join(Users users) {
         System.out.println(users);
         users.setRole("ROLE_USER");
